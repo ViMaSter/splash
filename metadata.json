@@ -1,0 +1,17 @@
+{
+  "KPackageStructure": "Plasma/Splash",
+  "KPlugin": {
+    "Id": "org.vimaster.runningbar",
+    "Name": "Running Bar",
+    "Description": "Minimal splash screen with a running bar.",
+    "Version": "1.0",
+    "License": "MIT",
+    "Authors": [
+      {
+        "Name": "ViMaSter"
+      }
+    ]
+  },
+  "X-Plasma-API": "declarativeappletscript",
+  "X-Plasma-MainScript": "contents/splash/Splash.qml"
+}
