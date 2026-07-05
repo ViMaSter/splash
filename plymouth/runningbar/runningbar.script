@@ -1,0 +1,49 @@
+# Running Bar Plymouth theme
+
+Window.SetBackgroundTopColor(0.1647, 0.1686, 0.1765);
+Window.SetBackgroundBottomColor(0.1647, 0.1686, 0.1765);
+
+screen_w = Window.GetWidth();
+screen_h = Window.GetHeight();
+
+line_h = screen_h * 0.13;
+line_w = 2;
+line_x = screen_w * 0.5;
+line_y = (screen_h - line_h) * 0.5;
+
+bar_h = line_h * 0.34;
+bar_w = line_w;
+bar_y = line_y + line_h;
+
+line = Box();
+line.SetPosition(line_x - (line_w / 2), line_y, line_w, line_h);
+line.SetColor(0.50, 0.50, 0.51, 1.00);
+
+bar = Box();
+bar.SetPosition(line_x - (bar_w / 2), bar_y, bar_w, bar_h);
+bar.SetColor(0.89, 0.48, 0.18, 1.00);
+
+progress = 0;
+dir = 1;
+
+fun refresh_callback ()
+{
+    speed = 0.016;
+    progress += speed * dir;
+
+    if (progress >= 1)
+    {
+        progress = 1;
+        dir = -1;
+    }
+    else if (progress <= 0)
+    {
+        progress = 0;
+        dir = 1;
+    }
+
+    bar_y = line_y + line_h - (progress * (line_h + bar_h));
+    bar.SetPosition(line_x - (bar_w / 2), bar_y, bar_w, bar_h);
+}
+
+Plymouth.SetRefreshFunction(refresh_callback);

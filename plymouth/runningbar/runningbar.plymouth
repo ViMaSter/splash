@@ -1,0 +1,8 @@
+[Plymouth Theme]
+Name=Running Bar
+Description=Minimal running bar boot splash
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/runningbar
+ScriptFile=/usr/share/plymouth/themes/runningbar/runningbar.script
