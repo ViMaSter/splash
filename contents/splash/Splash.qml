@@ -49,17 +49,17 @@ Item {
     // Middle row: 4, 5, 6
     Rectangle {
         id: bg4
-        anchors.top: bg1.bottom
+        anchors.verticalCenter: parent.verticalCenter
         anchors.left: parent.left
-        width: barStartX
+        width: bg5.x
         height: root.containerHeight
         color: "#FF2a2b2d"
     }
 
     Rectangle {
         id: bg5
-        anchors.top: bg1.bottom
-        anchors.left: bg4.right
+        anchors.verticalCenter: parent.verticalCenter
+        x: root.barStartX
         width: 1
         height: root.containerHeight
         color: "transparent"
@@ -67,9 +67,9 @@ Item {
 
     Rectangle {
         id: bg6
-        anchors.top: bg1.bottom
-        anchors.left: bg5.right
-        anchors.right: parent.right
+        anchors.verticalCenter: parent.verticalCenter
+        x: bg5.x + bg5.width
+        width: root.width - (bg5.x + bg5.width)
         height: root.containerHeight
         color: "#FF2a2b2d"
     }
@@ -107,7 +107,7 @@ Item {
         width: 1
         height: root.containerHeight
         x: root.width / 2 + root.xOffset - width / 2
-        y: root.height / 2 - root.yOffset
+        anchors.verticalCenter: parent.verticalCenter
         clip: true
 
         Rectangle {
@@ -151,7 +151,15 @@ Item {
                 property: "x"
                 to: root.barEndX
                 duration: 400
-                easing.type: Easing.InQuad
+                easing.type: Easing.OutExpo
+            }
+
+            NumberAnimation {
+                target: lineContainer
+                property: "opacity"
+                to: 0
+                duration: 400
+                easing.type: Easing.OutExpo
             }
 
             NumberAnimation {
@@ -159,75 +167,157 @@ Item {
                 property: "width"
                 to: root.barTravelDistance + 1
                 duration: 400
-                easing.type: Easing.InQuad
+                easing.type: Easing.OutExpo
             }
         }
 
         ParallelAnimation {
             NumberAnimation {
+                target: bg5
+                property: "x"
+                to: root.barStartX + root.barTravelDistance / 2 - root.width / 2
+                duration: 300
+                easing.type: Easing.OutExpo
+            }
+
+            NumberAnimation {
+                target: bg5
+                property: "width"
+                to: root.width
+                duration: 300
+                easing.type: Easing.OutExpo
+            }
+
+            NumberAnimation {
+                target: lineContainer
+                property: "height"
+                to: root.height
+                duration: 300
+                easing.type: Easing.OutExpo
+            }
+
+            NumberAnimation {
                 target: bg1
-                property: "opacity"
+                property: "y"
+                to: -(root.height / 2 - root.yOffset)
+                duration: 300
+                easing.type: Easing.OutExpo
+            }
+
+            NumberAnimation {
+                target: bg1
+                property: "height"
                 to: 0
                 duration: 300
-                easing.type: Easing.InOutQuad
+                easing.type: Easing.OutExpo
             }
 
             NumberAnimation {
                 target: bg2
-                property: "opacity"
+                property: "y"
+                to: -(root.height / 2 - root.yOffset)
+                duration: 300
+                easing.type: Easing.OutExpo
+            }
+
+            NumberAnimation {
+                target: bg2
+                property: "height"
                 to: 0
                 duration: 300
-                easing.type: Easing.InOutQuad
+                easing.type: Easing.OutExpo
             }
 
             NumberAnimation {
                 target: bg3
-                property: "opacity"
+                property: "y"
+                to: -(root.height / 2 - root.yOffset)
+                duration: 300
+                easing.type: Easing.OutExpo
+            }
+
+            NumberAnimation {
+                target: bg3
+                property: "height"
                 to: 0
                 duration: 300
-                easing.type: Easing.InOutQuad
+                easing.type: Easing.OutExpo
             }
 
             NumberAnimation {
                 target: bg4
-                property: "opacity"
-                to: 0
+                property: "height"
+                to: root.height
                 duration: 300
-                easing.type: Easing.InOutQuad
+                easing.type: Easing.OutExpo
+            }
+
+            NumberAnimation {
+                target: bg5
+                property: "height"
+                to: root.height
+                duration: 300
+                easing.type: Easing.OutExpo
             }
 
             NumberAnimation {
                 target: bg6
-                property: "opacity"
-                to: 0
+                property: "height"
+                to: root.height
                 duration: 300
-                easing.type: Easing.InOutQuad
+                easing.type: Easing.OutExpo
             }
 
             NumberAnimation {
                 target: bg7
-                property: "opacity"
+                property: "y"
+                to: root.height
+                duration: 300
+                easing.type: Easing.OutExpo
+            }
+
+            NumberAnimation {
+                target: bg7
+                property: "height"
                 to: 0
                 duration: 300
-                easing.type: Easing.InOutQuad
+                easing.type: Easing.OutExpo
             }
 
             NumberAnimation {
                 target: bg8
-                property: "opacity"
+                property: "y"
+                to: root.height
+                duration: 300
+                easing.type: Easing.OutExpo
+            }
+
+            NumberAnimation {
+                target: bg8
+                property: "height"
                 to: 0
                 duration: 300
-                easing.type: Easing.InOutQuad
+                easing.type: Easing.OutExpo
             }
 
             NumberAnimation {
                 target: bg9
-                property: "opacity"
-                to: 0
+                property: "y"
+                to: root.height
                 duration: 300
-                easing.type: Easing.InOutQuad
+                easing.type: Easing.OutExpo
             }
 
+            NumberAnimation {
+                target: bg9
+                property: "height"
+                to: 0
+                duration: 300
+                easing.type: Easing.OutExpo
+            }
+        }
+
+        ParallelAnimation {
             NumberAnimation {
                 target: lineContainer
                 property: "opacity"
