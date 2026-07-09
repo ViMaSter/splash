@@ -12,6 +12,11 @@ Item {
     property real barEndX: root.width / 2 - root.xOffset - 0.5
     property real barTravelDistance: Math.abs(root.barEndX - root.barStartX)
 
+    property int traverseDuration: 300
+    property int revealDuration: 200
+    property int fadeDuration: 200
+    property int loaderDuration: 1200
+
     onStageChanged: {
         if (stage === 5) {
             exitSequence.running = true
@@ -134,7 +139,7 @@ Item {
                 NumberAnimation {
                     from: lineContainer.height
                     to: -loader.height
-                    duration: 1200
+                    duration: root.loaderDuration
                     easing.type: Easing.OutQuad
                 }
             }
@@ -150,7 +155,7 @@ Item {
                 target: lineContainer
                 property: "x"
                 to: root.barEndX
-                duration: 400
+                duration: root.traverseDuration
                 easing.type: Easing.OutExpo
             }
 
@@ -158,15 +163,15 @@ Item {
                 target: lineContainer
                 property: "opacity"
                 to: 0
-                duration: 400
-                easing.type: Easing.OutExpo
+                duration: root.traverseDuration
+                easing.type: Easing.InExpo
             }
 
             NumberAnimation {
                 target: bg5
                 property: "width"
                 to: root.barTravelDistance + 1
-                duration: 400
+                duration: root.traverseDuration
                 easing.type: Easing.OutExpo
             }
         }
@@ -176,7 +181,7 @@ Item {
                 target: bg5
                 property: "x"
                 to: root.barStartX + root.barTravelDistance / 2 - root.width / 2
-                duration: 300
+                duration: root.revealDuration
                 easing.type: Easing.OutExpo
             }
 
@@ -184,7 +189,7 @@ Item {
                 target: bg5
                 property: "width"
                 to: root.width
-                duration: 300
+                duration: root.revealDuration
                 easing.type: Easing.OutExpo
             }
 
@@ -192,7 +197,7 @@ Item {
                 target: lineContainer
                 property: "height"
                 to: root.height
-                duration: 300
+                duration: root.revealDuration
                 easing.type: Easing.OutExpo
             }
 
@@ -200,7 +205,7 @@ Item {
                 target: bg1
                 property: "y"
                 to: -(root.height / 2 - root.yOffset)
-                duration: 300
+                duration: root.revealDuration
                 easing.type: Easing.OutExpo
             }
 
@@ -208,7 +213,7 @@ Item {
                 target: bg1
                 property: "height"
                 to: 0
-                duration: 300
+                duration: root.revealDuration
                 easing.type: Easing.OutExpo
             }
 
@@ -216,7 +221,7 @@ Item {
                 target: bg2
                 property: "y"
                 to: -(root.height / 2 - root.yOffset)
-                duration: 300
+                duration: root.revealDuration
                 easing.type: Easing.OutExpo
             }
 
@@ -224,7 +229,7 @@ Item {
                 target: bg2
                 property: "height"
                 to: 0
-                duration: 300
+                duration: root.revealDuration
                 easing.type: Easing.OutExpo
             }
 
@@ -232,7 +237,7 @@ Item {
                 target: bg3
                 property: "y"
                 to: -(root.height / 2 - root.yOffset)
-                duration: 300
+                duration: root.revealDuration
                 easing.type: Easing.OutExpo
             }
 
@@ -240,7 +245,7 @@ Item {
                 target: bg3
                 property: "height"
                 to: 0
-                duration: 300
+                duration: root.revealDuration
                 easing.type: Easing.OutExpo
             }
 
@@ -248,7 +253,7 @@ Item {
                 target: bg4
                 property: "height"
                 to: root.height
-                duration: 300
+                duration: root.revealDuration
                 easing.type: Easing.OutExpo
             }
 
@@ -256,7 +261,7 @@ Item {
                 target: bg5
                 property: "height"
                 to: root.height
-                duration: 300
+                duration: root.revealDuration
                 easing.type: Easing.OutExpo
             }
 
@@ -264,7 +269,7 @@ Item {
                 target: bg6
                 property: "height"
                 to: root.height
-                duration: 300
+                duration: root.revealDuration
                 easing.type: Easing.OutExpo
             }
 
@@ -272,7 +277,7 @@ Item {
                 target: bg7
                 property: "y"
                 to: root.height
-                duration: 300
+                duration: root.revealDuration
                 easing.type: Easing.OutExpo
             }
 
@@ -280,7 +285,7 @@ Item {
                 target: bg7
                 property: "height"
                 to: 0
-                duration: 300
+                duration: root.revealDuration
                 easing.type: Easing.OutExpo
             }
 
@@ -288,7 +293,7 @@ Item {
                 target: bg8
                 property: "y"
                 to: root.height
-                duration: 300
+                duration: root.revealDuration
                 easing.type: Easing.OutExpo
             }
 
@@ -296,7 +301,7 @@ Item {
                 target: bg8
                 property: "height"
                 to: 0
-                duration: 300
+                duration: root.revealDuration
                 easing.type: Easing.OutExpo
             }
 
@@ -304,7 +309,7 @@ Item {
                 target: bg9
                 property: "y"
                 to: root.height
-                duration: 300
+                duration: root.revealDuration
                 easing.type: Easing.OutExpo
             }
 
@@ -312,7 +317,7 @@ Item {
                 target: bg9
                 property: "height"
                 to: 0
-                duration: 300
+                duration: root.revealDuration
                 easing.type: Easing.OutExpo
             }
         }
@@ -322,7 +327,7 @@ Item {
                 target: lineContainer
                 property: "opacity"
                 to: 0
-                duration: 300
+                duration: root.fadeDuration
                 easing.type: Easing.InOutQuad
             }
         }
